@@ -111,7 +111,10 @@ jobs:
             set MACOS=0
             call "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
             xonsh ci\test.xsh
-
+      - uses: actions/upload-artifact@v3
+        with:
+          name: build-${{ runner.os }}
+          path: ./
   build_to_wasm:
     name: Build LPython to WASM
     runs-on: ubuntu-latest
@@ -193,7 +196,10 @@ jobs:
             which node
             node -v
             node --experimental-wasm-bigint src/lpython/tests/test_lpython.js
-
+      - uses: actions/upload-artifact@v3
+        with:
+          name: build-wasm
+          path: ./
   test_pip_pkgs:
     name: Test PIP Installable Packages
     runs-on: ubuntu-latest
