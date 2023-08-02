@@ -1,5 +1,4 @@
 name: LPython CI
-
 on:
   push:
     branches:
